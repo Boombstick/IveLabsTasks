@@ -12,7 +12,7 @@ namespace ConsoleApp.Tests
             _deviceManager = new DeviceManager();
         }
         /// <summary>
-        /// У одной бригады по 1 device
+        /// РЈ РѕРґРЅРѕР№ Р±СЂРёРіР°РґС‹ РїРѕ 1 device - Р’ РёС‚РѕРіРµ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїСѓСЃС‚РѕР№ РјР°СЃСЃРёРІ
         /// </summary>
         [TestCase("[\r\n  {\r\n    \"device\": {\r\n      \"serialNumber\": \"913580515e13\",\r\n      \"isOnline\": false\r\n    },\r\n    \"brigade\": { \"code\": \"2027154745\" }\r\n  },\r\n  {\r\n    \"device\": {\r\n        \"serialNumber\": \"624535123e13\",\r\n      \"isOnline\": false\r\n    },\r\n    \"brigade\": { \"code\": \"2027154745\" }\r\n},\r\n  {\r\n    \"device\": {\r\n        \"serialNumber\": \"834187674e13\",\r\n      \"isOnline\": true\r\n    },\r\n    \"brigade\": { \"code\": \"701859686\" }\r\n}]")]
         public void Test1(string json)
@@ -21,7 +21,7 @@ namespace ConsoleApp.Tests
             Assert.That(_deviceManager.GetConflicts(deviceInfos), Has.Count.EqualTo(0));
         }
         /// <summary>
-        /// У одной бригады 2 device, но один online - В итоге должен быть массив c одной записью
+        /// РЈ РѕРґРЅРѕР№ Р±СЂРёРіР°РґС‹ 2 device, РЅРѕ РѕРґРёРЅ online - Р’ РёС‚РѕРіРµ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РјР°СЃСЃРёРІ c РѕРґРЅРѕР№ Р·Р°РїРёСЃСЊСЋ
         /// </summary>
         [TestCase("[{\"device\": {\"serialNumber\": \"913580515e13\",\"isOnline\": false},\"brigade\": { \"code\": \"2027154745\" }\r\n  },\r\n  {\r\n    \"device\": {\r\n      \"serialNumber\": \"624535123e13\",\r\n      \"isOnline\": false\r\n    },\r\n    \"brigade\": { \"code\": \"2027154745\" }\r\n  },\r\n  {\r\n    \"device\": {\r\n      \"serialNumber\": \"834187674e13\",\r\n      \"isOnline\": true\r\n    },\r\n    \"brigade\": { \"code\": \"701859686\" }\r\n  },\r\n  {\r\n    \"device\": {\r\n      \"serialNumber\": \"834187674e133\",\r\n      \"isOnline\": false\r\n    },\r\n    \"brigade\": { \"code\": \"701859686\" }\r\n  }\r\n]")]
         [TestCase("[{\"device\": {\"serialNumber\": \"913580515e13\",\"isOnline\": false},\"brigade\": { \"code\": \"2027154745\" }\r\n  },\r\n  {\r\n    \"device\": {\r\n      \"serialNumber\": \"624535123e13\",\r\n      \"isOnline\": false\r\n    },\r\n    \"brigade\": { \"code\": \"2027154745\" }\r\n  },\r\n  {\r\n    \"device\": {\r\n      \"serialNumber\": \"834187674e13\",\r\n      \"isOnline\": true\r\n    },\r\n    \"brigade\": { \"code\": \"701859686\" }\r\n  },\r\n  {\r\n    \"device\": {\r\n      \"serialNumber\": \"834187674e133\",\r\n      \"isOnline\": true\r\n    },\r\n    \"brigade\": { \"code\": \"701859686\" }\r\n  }\r\n]")]
@@ -32,7 +32,7 @@ namespace ConsoleApp.Tests
         }
 
        /// <summary>
-       /// У одной бригады 2 device, но оба offline - В итоге должен быть пустой массив
+       /// РЈ РѕРґРЅРѕР№ Р±СЂРёРіР°РґС‹ 2 device, РЅРѕ РѕР±Р° offline - Р’ РёС‚РѕРіРµ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїСѓСЃС‚РѕР№ РјР°СЃСЃРёРІ
        /// </summary>
         [TestCase("[{\"device\": {\"serialNumber\": \"913580515e13\",\"isOnline\": false},\"brigade\": { \"code\": \"2027154745\" }\r\n  },\r\n  {\r\n    \"device\": {\r\n      \"serialNumber\": \"624535123e13\",\r\n      \"isOnline\": false\r\n    },\r\n    \"brigade\": { \"code\": \"2027154745\" }\r\n  },\r\n  {\r\n    \"device\": {\r\n      \"serialNumber\": \"834187674e13\",\r\n      \"isOnline\": false\r\n    },\r\n    \"brigade\": { \"code\": \"701859686\" }\r\n  },\r\n  {\r\n    \"device\": {\r\n      \"serialNumber\": \"834187674e133\",\r\n      \"isOnline\": false\r\n    },\r\n    \"brigade\": { \"code\": \"701859686\" }\r\n  }\r\n]")]
         public void Test3(string json)
