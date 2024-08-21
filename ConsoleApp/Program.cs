@@ -1,4 +1,5 @@
-﻿using ConsoleApp.Requests;
+﻿using System.Text.Json;
+using ConsoleApp.Requests;
 using System.Text.Json.Nodes;
 
 namespace ConsoleApp
@@ -24,9 +25,12 @@ namespace ConsoleApp
                 deviceInfos.Add(req);
             }
             var conflicts = new DeviceManager().GetConflicts(deviceInfos);
-            var serializedConflicts = System.Text.Json.JsonSerializer.Serialize(conflicts);
+            var serializedConflicts = JsonSerializer.Serialize(conflicts);
 
-            File.WriteAllText(@"C:\Users\Boomb\Desktop\Conflicts.json", serializedConflicts);
+            using (StreamWriter writer = new StreamWriter("Conflicts.json", false))
+            {
+                writer.Write(serializedConflicts);
+            }
         }
     }
 }
