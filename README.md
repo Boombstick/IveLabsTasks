@@ -8,4 +8,4 @@ WHERE PDT BETWEEN to_date('01-06-2020','dd-mm-yyyy') AND to_date('30-06-2020','d
   WHERE USAGE_DATE BETWEEN to_date('01-06-2020','dd-mm-yyyy') AND to_date('30-06-2020','dd-mm-yyyy')
 
 Задание 2  
-json с результатами лежит внутри проекта
+json с результатами лежит внутри проекта в папке ConsoleApp
